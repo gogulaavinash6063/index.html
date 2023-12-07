@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #divgetting{
+        border: 2px solid black;
+    }
+</style>
+<body>
+    <button id="btn1">Clear</button>
+    <div id="divgetting"></div>
+</body>
+<script>
+    let cc=[];
+    let car=JSON.parse(localStorage.getItem("cart"))
+    console.log(car)
+    car==null?car=[]:car=car
+    // cc.push(car)
+    car.map((val,ind,arr)=>{
+        let divgetting =document.getElementById("divgetting")
+        let divcreating =document.createElement("div")
+        let title=document.createElement("p")
+        title.innerText=val["id"]
+        let id=document.createElement("h5")
+        id.innerText=val["title"]
+        let imgcreating=document.createElement("img")
+        imgcreating.setAttribute("src",val.image)
+        imgcreating.style.width="50px"
+        divcreating.appendChild(title)
+        divcreating.appendChild(imgcreating)
+        divcreating.appendChild(id)
+
+
+        divgetting.appendChild(divcreating)
+
+    })
+    let cleargetting=document.getElementById("btn1")
+    cleargetting.addEventListener("click",()=>{
+        title.innerText=""
+        id.innerText="";
+        imgcreating.style.width=""
+
+    })
+
+</script>
+</html>

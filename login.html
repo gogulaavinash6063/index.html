@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url("./OIP\ \(1\).jpeg");
+            background-size: cover;
+        }
+        #div1{
+            background-color: burlywood;
+            position: absolute;
+            left: 650px;
+            top: 250px;
+            border: 2px solid black;
+            border-radius: 10%;
+            width: 350px;
+            height: 250px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="div1">
+        <form action="">
+            <!-- <center> -->
+                <h4 style="margin-top: 10px;"><center>LOGIN</center></h4>
+            <!-- <label for="name"><b>Username</b></label> -->
+            <B style="margin-left: 10px;">Username:</B><input type="text" id="inp1" style="border: 2px solid black; margin-bottom: 15px;">
+            <br><br>
+            <!-- <label for="gmail"></label><b>Password</b></label> -->
+            <b style="margin-left: 10px;">Password:</b><input type="text" id="inp2" style="border: 2px solid black;">
+            <br><br>
+            <input type="submit" value="Login" style="color: white; background-color: green; margin-left: 150px;">
+            <!-- </center> -->
+        </form>
+    </div>
+
+    <script>
+             
+          
+         let form=document.forms
+         console.log(form[0])
+         form[0].addEventListener("submit",(e)=>{
+            e.preventDefault()
+         let username=e.target[0].value;
+         console.log(username);
+         let password=e.target[1].value;
+         let aa=JSON.parse(localStorage.getItem("cart"))
+        let bb=aa.find((a)=>{
+            return a.username==username && a.password==password
+        
+        })
+         if(bb){
+            window.location.assign("./code.html")
+         }
+         else{
+            alert("invaild details")
+         }  
+        })
+
+         
+
+
+
+
+
+
+        </script>
+    </body>
+    </html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-image: url(./img.img);
+        background-size: cover;
+    }
+    #div1{
+        position: absolute;
+        left: 600px;
+        bottom: 200px;
+    }
+</style>
+<body>
+    <div id="div1" style="border: 2px solid; width: 350px; height: 350px; background-color: antiquewhite; border-radius: 10%;">
+    <form>
+        <center><H4 style="margin-bottom: 25px;">REGISTRATION</H4>
+        <label for="username">Username</label>
+        <input type="text" id="inp1" style="border: 2px solid black; margin-bottom: 15px;">
+        <br><br>
+        <label for="password">Password</label>
+        <input type="text" id="inp2" style="border: 2px solid black; margin-bottom: 15px;">
+        <br><br>
+        <label for="cpassword">Conform</label>
+        <input type="text" id="inp" style="border:2px solid black" style="margin-bottom: 20px;">
+        <br><br>
+        <input type="submit" id="inp3" style="color: white; background-color: blue; width: 100px; margin-bottom: 25px;">
+        <br>
+        <input type="button" id="inp4" value="reset" style="color: white; background-color: green; width: 100px; margin-bottom: 25px;">
+    
+    </form>
+    </div>
+
+    <script>
+        let forms=document.forms
+        console.log(forms[0]);
+    
+        let arr=[];
+        forms[0].addEventListener("submit",(e)=>{
+            e.preventDefault()
+            let inputgetting1=document.getElementById("inp1")
+
+            let username=e.target[0].value
+            let password=e.target[1].value
+            let cpassword=e.target[2].value
+            
+            
+            arr.push({username:username,password:password,cpassword:cpassword})
+            console.log(arr);
+            localStorage.setItem("cart",JSON.stringify(arr))
+
+            if (username[0]==username[0].toUpperCase() && username.length >=8 && username.length<=15 && password[0]==password[0].toUpperCase() && password.length>=8 && password.length<=15 && password==cpassword  ) {
+                 window.location.assign("./login.html")
+            }
+             else{
+                 alert("Please enter Valid Details")
+             }
+             e.target[0].value=""
+             e.target[1].value=""
+             e.target[2].value=""
+        })
+        
+        let inputgetting4=document.getElementById("inp4")
+        inputgetting4.addEventListener("click",()=>{
+            let inputgetting1=document.getElementById("inp1")
+            let inputgetting2=document.getElementById("inp2")
+            let inputgetting4=document.getElementById("inp")
+            // console.log(inputgetting1.value);
+            // console.log(inputgetting2.value);
+            inputgetting1.value=""
+            inputgetting2.value=""
+        })
+        
+    </script>
+</body>
+</html>
